@@ -1,3 +1,5 @@
+package codingdojang.wordladder;
+
 import java.util.List;
 
 /**
