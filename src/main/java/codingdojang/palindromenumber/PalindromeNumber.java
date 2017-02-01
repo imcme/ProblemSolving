@@ -15,7 +15,6 @@ public class PalindromeNumber {
 
 		int digit = digitAndStartNum.getKey();
 		int remainCount = digitAndStartNum.getValue();
-
 		int halfNumber = calculateHalfNumber(digit, remainCount);
 
 		return makeFullNumber(digit, halfNumber);
