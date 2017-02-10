@@ -8,7 +8,7 @@ import spock.lang.Specification
  */
 class PeopleCountSpec extends Specification {
     def "해당 시간내에 근무중인 인원을 가져온다."() {
-        def filePath = "./src/test/resources/howmanypeopleatthattime/workLog.txt";
+        def filePath = "./src/test/resources/codingdojang/howmanypeopleatthattime/workLog.txt";
         def PeopleCount peopleCount = new PeopleCount(filePath)
 
         expect:
