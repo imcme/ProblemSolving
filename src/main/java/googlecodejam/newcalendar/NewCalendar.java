@@ -1,7 +1,9 @@
 package googlecodejam.newcalendar;
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.StringTokenizer;
 
@@ -10,35 +12,55 @@ import java.util.StringTokenizer;
  * @since 2017. 02. 09.
  */
 public class NewCalendar {
-	public static void main(String[] args) throws IOException {
-		BufferedReader in = new BufferedReader(new FileReader("./src/test/resources/googlecodejam/newcalendar/A-small-practice.in"));
+	public void run(String filePath) throws IOException {
+		BufferedReader in = new BufferedReader(new FileReader(filePath));
+		BufferedWriter out = new BufferedWriter(new FileWriter("./src/test/resources/googlecodejam/newcalendar/result.out"));
 
 		int T = Integer.parseInt(in.readLine());
-		int testCase = 0;
-		while (testCase++ < T) {
+		int caseCount = 0;
+		while (caseCount++ < T) {
 			StringTokenizer st = new StringTokenizer(in.readLine());
-			int monthOfYear = Integer.parseInt(st.nextToken());
-			int dayOfMonth = Integer.parseInt(st.nextToken());
-			int dayOfWeek = Integer.parseInt(st.nextToken());
+			long totalMonth = Long.parseLong(st.nextToken());
+			long dayPerMonth = Long.parseLong(st.nextToken());
+			long dayPerWeek = Long.parseLong(st.nextToken());
 
-			int weekNum = 0;
-			int lineNum = 0;
-			for (int m = 0; m < monthOfYear; m++) {
-				for (int d = 0; d < dayOfMonth; d++) {
-					if (weekNum == dayOfWeek - 1) {
-						lineNum++;
-						weekNum = 0;
-					} else {
-						weekNum++;
-					}
+			long totalLine = 0;
+
+			// 싸이클 및 싸이클당 라인 수 구하기
+			long monthPerCycle = 0;
+			long dayCount = dayPerMonth;
+			for (long month = 0; month < totalMonth; month++) {
+				totalLine += dayCount / dayPerWeek;
+
+				long remainDay = dayCount % dayPerWeek;
+				if (remainDay == 0) {
+					monthPerCycle = month + 1;
+					break;
 				}
 
-				if (weekNum != 0) {
-					lineNum++;
+				totalLine++;
+				dayCount = remainDay + dayPerMonth;
+			}
+
+			// 일수 계산
+			if (monthPerCycle > 0) {
+				long cycleCount = totalMonth / monthPerCycle;
+				long remainMonth = totalMonth % monthPerCycle;
+
+				totalLine = totalLine * cycleCount;
+
+				dayCount = dayPerMonth;
+				while (remainMonth-- > 0) {
+					totalLine += dayCount / dayPerWeek + 1;
+					dayCount = (dayCount % dayPerWeek) + dayPerMonth;
 				}
 			}
 
-			System.out.println("Case #" + testCase + ": " + lineNum);
+			out.write("Case #" + caseCount + ": " + totalLine);
+			out.newLine();
 		}
+
+		out.close();
+		in.close();
 	}
 }
