@@ -5,6 +5,7 @@ import spock.lang.Specification
 import java.nio.file.Files
 import java.nio.file.Paths
 import java.util.stream.Collectors
+
 /**
  * @author MinCheol Lim <lim.mincheol@nhn.com>
  * @since 2017. 02. 20.
@@ -20,8 +21,8 @@ class NewCalendarSpec extends Specification {
 		new NewCalendar().run(problemPath);
 
 		then:
-		def resultFile = Files.lines(Paths.get(resultPath));
 		def answerFile = Files.lines(Paths.get(answerPath));
+		def resultFile = Files.lines(Paths.get(resultPath));
 
 		def expect = resultFile.collect(Collectors.toList());
 		def actual = answerFile.collect(Collectors.toList());
@@ -39,8 +40,8 @@ class NewCalendarSpec extends Specification {
 		new NewCalendar().run(problemPath);
 
 		then:
-		def resultFile = Files.lines(Paths.get(resultPath));
 		def answerFile = Files.lines(Paths.get(answerPath));
+		def resultFile = Files.lines(Paths.get(resultPath));
 
 		def expect = resultFile.collect(Collectors.toList());
 		def actual = answerFile.collect(Collectors.toList());
