@@ -27,12 +27,12 @@ package codingdojang.twoprinters;
  */
 public class TwoPrinters {
 	public int run(int x, int y, int n) {
-		int floor = (n * y) / (x + y);
-		int ceil = floor + 1;
+		int floorA = (n * y) / (x + y);
+		int ceilA = floorA + 1;
 
-		int floorAnswer = Math.max(floor * x, (n - floor) * y);
-		int ceilAnswer = Math.max(ceil * x, (n - ceil) * y);
+		int floorCase = Math.max(floorA * x, (n - floorA) * y);
+		int ceilCase = Math.max(ceilA * x, (n - ceilA) * y);
 
-		return Math.min(floorAnswer, ceilAnswer);
+		return Math.min(floorCase, ceilCase);
 	}
 }
