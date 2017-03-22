@@ -17,7 +17,10 @@ class TwoPrintersSpec extends Specification {
 		x  | y  | n   | answer
 		1  | 1  | 5   | 3
 		3  | 5  | 4   | 9
+		5  | 3  | 4   | 9
 		23 | 17 | 30  | 299
+		17 | 23 | 30  | 299
 		82 | 31 | 500 | 11253
+		31 | 82 | 500 | 11253
 	}
 }
