@@ -9,9 +9,8 @@ package codingdojang.twoprinters;
  *
  * 풀이:
  * n = a + b라고 가정한다.
- * 총 시간인 T = ax 또는 bx 이다.
+ * 총 시간 T = max(ax, by) 이다.
  *
- * T = ax라고 가정한다.
  * 이때 T가 최소가 되는 경우는 ax - by = 0 인경우이다. 이를 수식으로 풀면
  *
  * ax - (n - a)y = 0
@@ -19,7 +18,7 @@ package codingdojang.twoprinters;
  * a(x + y) = ny
  * a = ny / (x + y)
  *
- * 수식상 a는 실수지만, 문제상 정수이어야하기때문에,
+ * 수식상 a는 실수지만, 문제상 정수이기때문에,
  * 내림과 올림 둘다 계산하여 작은 수를 리턴한다.
  *
  * @author MinCheol Lim <lim.mincheol@nhn.com>
