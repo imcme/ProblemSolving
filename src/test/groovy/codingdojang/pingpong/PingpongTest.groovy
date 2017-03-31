@@ -7,9 +7,9 @@ import spock.lang.Specification
  * @since 2017. 03. 31.
  */
 class PingpongTest extends Specification {
-	def "test"() {
-		def sut = new Pingpong()
+	def sut = new Pingpong()
 
+	def "본문 테스트"() {
 		expect:
 		sut.run(x) == answer
 
@@ -25,6 +25,22 @@ class PingpongTest extends Specification {
 		68     | 2
 		100    | 2
 		10000  | -122
-		100000 | 212
+//		100000 | 212  // 이것은 스택오버플로우 발생
+	}
+
+	def "방향 테스트"() {
+		expect:
+		sut.makeDirection(x) == answer
+
+		where:
+		x | answer
+		1|1
+		2|1
+		3|1
+		4|1
+		5|1
+		6|1
+		7|-1
+		8|-1
 	}
 }

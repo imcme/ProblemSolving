@@ -8,18 +8,23 @@ package codingdojang.pingpong;
  */
 public class Pingpong {
 	public int run(int x) {
-		int num = 1;
-		int direction = 1;
-
-		for (int ordinal = 2; ordinal <= x; ordinal++) {
-			num += direction;
-
-			if (ordinal % 7 == 0 || isContainsSeven(ordinal)) {
-				direction *= -1;
-			}
+		if (x == 1) {
+			return 1;
 		}
 
-		return num;
+		return run(x - 1) + makeDirection(x - 1);
+	}
+
+	private int makeDirection(int ordinal) {
+		if (ordinal == 1) {
+			return 1;
+		}
+
+		if (ordinal % 7 == 0 || isContainsSeven(ordinal)) {
+			return -1 * makeDirection(ordinal - 1);
+		} else {
+			return makeDirection(ordinal - 1);
+		}
 	}
 
 	private boolean isContainsSeven(int num) {
