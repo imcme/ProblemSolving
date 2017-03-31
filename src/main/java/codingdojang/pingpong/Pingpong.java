@@ -14,11 +14,23 @@ public class Pingpong {
 		for (int ordinal = 2; ordinal <= x; ordinal++) {
 			num += direction;
 
-			if (ordinal % 7 == 0 || (ordinal + "").contains("7")) {
+			if (ordinal % 7 == 0 || isContainsSeven(ordinal)) {
 				direction *= -1;
 			}
 		}
 
 		return num;
+	}
+
+	private boolean isContainsSeven(int num) {
+		if (num == 0) {
+			return false;
+		}
+
+		if (num % 10 == 7) {
+			return true;
+		}
+
+		return isContainsSeven(num / 10);
 	}
 }
