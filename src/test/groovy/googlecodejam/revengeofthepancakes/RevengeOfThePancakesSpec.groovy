@@ -10,6 +10,8 @@ import java.util.stream.Collectors
  * @since 2017. 04. 11.
  */
 class RevengeOfThePancakesSpec extends Specification {
+	def sut = new RevengeOfThePancakes();
+
 	def "small case 테스트"() {
 		given:
 		def problemPath = "./src/test/resources/googlecodejam/revengeofthepancakes/B-small-practice.in";
@@ -17,14 +19,14 @@ class RevengeOfThePancakesSpec extends Specification {
 		def answerPath = "./src/test/resources/googlecodejam/revengeofthepancakes/B-small-answer.out";
 
 		when:
-		new RevengeOfThePancakes().run(problemPath);
+		sut.run(problemPath);
 
 		then:
 		def answerFile = Files.lines(Paths.get(answerPath));
 		def resultFile = Files.lines(Paths.get(resultPath));
 
-		def expect = resultFile.collect(Collectors.toList());
-		def actual = answerFile.collect(Collectors.toList());
+		def expect = answerFile.collect(Collectors.toList());
+		def actual = resultFile.collect(Collectors.toList());
 
 		expect == actual;
 	}
@@ -36,14 +38,14 @@ class RevengeOfThePancakesSpec extends Specification {
 		def answerPath = "./src/test/resources/googlecodejam/revengeofthepancakes/B-large-answer.out";
 
 		when:
-		new RevengeOfThePancakes().run(problemPath);
+		sut.run(problemPath);
 
 		then:
 		def answerFile = Files.lines(Paths.get(answerPath));
 		def resultFile = Files.lines(Paths.get(resultPath));
 
-		def expect = resultFile.collect(Collectors.toList());
-		def actual = answerFile.collect(Collectors.toList());
+		def expect = answerFile.collect(Collectors.toList());
+		def actual = resultFile.collect(Collectors.toList());
 
 		expect == actual;
 	}
